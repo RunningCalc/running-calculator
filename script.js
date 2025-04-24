@@ -38,6 +38,9 @@ function predict() {
   const minutes = Math.floor(predicted / 60)
   const sec = predicted % 60
 
-
-  document.getElementById("result").textContent = `Predicted time: ${minutes} minutes and ${sec.toFixed(2)} seconds`;
+  if(minutes == 0){
+    document.getElementById("result").textContent = `Predicted time: ${sec.toFixed(2)} seconds`;
+  } else{
+    document.getElementById("result").textContent = `Predicted time: ${minutes} minutes and ${sec.toFixed(2)} seconds`;
+  }
 }
