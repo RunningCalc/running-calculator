@@ -10,7 +10,7 @@ const table = {
 function predict() {
   const inDist = Number(document.getElementById("inputDistance").value)
   const inTime = parseFloat(document.getElementById("inputTime").value)
-  const outDist = parseInt(document.getElementById("outputDistance").value)
+  const outDist = Number(document.getElementById("outputDistance").value);
 
   const col = table[inDist]
   const outCol = table[outDist]
