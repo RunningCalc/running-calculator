@@ -8,7 +8,7 @@ const table = {
 }
 
 function predict() {
-  const inDist = parseInt(document.getElementById("inputDistance").value)
+  const inDist = Number(document.getElementById("inputDistance").value)
   const inTime = parseFloat(document.getElementById("inputTime").value)
   const outDist = parseInt(document.getElementById("outputDistance").value)
 
