@@ -24,7 +24,12 @@ function predict() {
   while (i < col.length - 1 && !(col[i] <= inTime && inTime <= col[i + 1])) {
     i++
   }
-
+  if (i >= col.length - 1) {
+    i = col.length - 2 // extrapolate beyond last pair
+  }
+  if (inTime < col[0]) {
+    i = 0 // extrapolate below first pair
+  }
   const ratio = (inTime - col[i]) / (col[i + 1] - col[i])
   const predicted = outCol[i] + ratio * (outCol[i + 1] - outCol[i])
 
