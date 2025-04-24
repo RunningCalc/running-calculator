@@ -26,14 +26,18 @@ function predict() {
   }
 
   if (i >= col.length - 1) {
-    i = col.length - 2; // Extrapolate beyond last pair
+    i = col.length - 2; 
   }
   if (inTime < col[0]) {
-    i = 0; // Extrapolate below first pair
+    i = 0; 
   }
 
   const ratio = (inTime - col[i]) / (col[i + 1] - col[i]);
   const predicted = outCol[i] + ratio * (outCol[i + 1] - outCol[i]);
 
-  document.getElementById("result").textContent = `Predicted time: ${predicted.toFixed(2)} seconds`;
+  const minutes = Math.floor(predicted / 60)
+  const sec = predicted % 60
+
+
+  document.getElementById("result").textContent = `Predicted time: ${minutes} minutes and ${sec} seconds`;
 }
