@@ -30,3 +30,7 @@ body {
   button:hover {
     background: #0056b3;
   }
+label, select, input {
+  display: block;
+  margin-bottom: 1em;
+}
