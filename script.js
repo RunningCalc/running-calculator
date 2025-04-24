@@ -39,5 +39,5 @@ function predict() {
   const sec = predicted % 60
 
 
-  document.getElementById("result").textContent = `Predicted time: ${minutes} minutes and ${sec} seconds`;
+  document.getElementById("result").textContent = `Predicted time: ${minutes} minutes and ${sec.toFixed(2)} seconds`;
 }
