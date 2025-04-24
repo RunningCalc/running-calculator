@@ -8,30 +8,32 @@ const table = {
 }
 
 function predict() {
-  const inDist = Number(document.getElementById("inputDistance").value)
-  const inTime = parseFloat(document.getElementById("inputTime").value)
-  const outDist = Number(document.getElementById("outputDistance").value);
+  const inDist = Number(document.getElementById("inputDistance").value); // input distance from dropdown
+  const inTime = parseFloat(document.getElementById("inputTime").value); // time the user ran
+  const outDist = Number(document.getElementById("outputDistance").value); // output distance from dropdown
 
-  const col = table[inDist]
-  const outCol = table[outDist]
+  const col = table[inDist];
+  const outCol = table[outDist];
 
   if (!col || !outCol) {
-    document.getElementById("result").textContent = "Unsupported distance"
-    return
+    document.getElementById("result").textContent = "Unsupported distance";
+    return;
   }
 
-  let i = 0
+  let i = 0;
   while (i < col.length - 1 && !(col[i] <= inTime && inTime <= col[i + 1])) {
-    i++
+    i++;
   }
+
   if (i >= col.length - 1) {
-    i = col.length - 2 // extrapolate beyond last pair
+    i = col.length - 2; // Extrapolate beyond last pair
   }
   if (inTime < col[0]) {
-    i = 0 // extrapolate below first pair
+    i = 0; // Extrapolate below first pair
   }
-  const ratio = (inTime - col[i]) / (col[i + 1] - col[i])
-  const predicted = outCol[i] + ratio * (outCol[i + 1] - outCol[i])
 
-  document.getElementById("result").textContent = `Predicted time: ${predicted.toFixed(2)} seconds`
+  const ratio = (inTime - col[i]) / (col[i + 1] - col[i]);
+  const predicted = outCol[i] + ratio * (outCol[i + 1] - outCol[i]);
+
+  document.getElementById("result").textContent = `Predicted time: ${predicted.toFixed(2)} seconds`;
 }
